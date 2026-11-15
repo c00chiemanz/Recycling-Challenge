@@ -57,7 +57,7 @@ const wasteItems = [
   {
     name: "Mehltüte aus unbeschichtetem Papier",
     type: "paper",
-    image: "assets/mehltüte.png",
+    image: "assets/mehltuete.png",
     info: "Unbeschichtetes Papier kann im Altpapier recycelt werden."
   },
   {
