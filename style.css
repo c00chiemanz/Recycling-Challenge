@@ -1,0 +1,423 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #EAF5EF;
+  color: #183B2D;
+}
+
+.game {
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.play-area {
+  background: white;
+  border-radius: 24px;
+  padding: 35px;
+  min-height: 380px;
+}
+
+.waste-item {
+  width: 240px;
+  margin: 25px auto;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.bins {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 80px;
+  margin-top: 18px;
+  flex-wrap: nowrap;
+}
+
+
+.bin {
+  width: 185px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  position: relative;
+}
+
+/* Deckel */
+.bin-lid {
+  width: 165px;
+  height: 18px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Griff direkt AUF dem Deckel */
+.bin-handle {
+  width: 54px;
+  height: 12px;
+  border-radius: 10px;
+  position: relative;
+  margin-top: -15px;
+  margin-bottom: 6px;
+  z-index: 3;
+}
+
+/* Tonnenkörper */
+.bin-body {
+  width: 150px;
+  height: 190px;
+  border-radius: 16px 16px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 12px 16px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.10);
+}
+
+/* Vertikale Rillen */
+.bin-body::before,
+.bin-body::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  width: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.bin-body::before {
+  left: 24px;
+}
+
+.bin-body::after {
+  right: 24px;
+}
+
+/* Symbol */
+.bin-symbol {
+  font-size: 40px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+/* Beschriftung */
+.bin-label {
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 700;
+  max-width: 110px;
+}
+
+/* Farben */
+.paper .bin-lid,
+.paper .bin-handle,
+.paper .bin-body {
+  background: #3d89c9;
+}
+
+.plastic .bin-lid,
+.plastic .bin-handle,
+.plastic .bin-body {
+  background: #d7aa1c;
+}
+
+.glass .bin-lid,
+.glass .bin-handle,
+.glass .bin-body {
+  background: #429b68;
+}
+
+/* Hover */
+.bin:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+button {
+  margin-top: 16px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 12px;
+  background: #183B2D;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .bins {
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .bin {
+    width: 120px;
+  }
+
+  .bin-lid {
+    width: 100px;
+    height: 12px;
+  }
+
+  .bin-handle {
+    width: 34px;
+    height: 6px;
+    margin-bottom: 4px;
+  }
+
+  .bin-body {
+    width: 95px;
+    height: 120px;
+    padding: 8px;
+  }
+
+  .bin-symbol {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .bin-label {
+    font-size: 12px;
+  }
+}
+
+.waste-item img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bin {
+  transition: transform 0.2s ease,
+              filter 0.2s ease;
+  cursor: pointer;
+}
+
+.bin:hover {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+
+.waste-item {
+  transition: filter 0.2s ease;
+}
+
+.waste-item:hover {
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+}
+
+#feedback {
+  font-size: 24px;
+  font-weight: bold;
+  min-height: 30px;
+}
+
+
+/* Verpackungsname */
+#item-name {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* Frage über der Verpackung */
+.play-area h2 {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+/* Feedback und Recyclinginformationen */
+#feedback {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 20px auto;
+  min-height: 35px;
+}
+
+/* Punktestand und Timer */
+.scoreboard {
+  font-size: 26px;
+}
+
+/* Beschriftung der Mülltonnen */
+.bin {
+  font-size: 24px;
+}
+
+/* Symbole auf den Mülltonnen */
+.bin-symbol {
+  font-size: 65px;
+}
+
+
+/* Gesamte Spieloberfläche */
+.game {
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 14px 24px 18px;
+  text-align: center;
+}
+
+/* Hauptüberschrift */
+h1 {
+  font-size: 34px;
+  margin: 0 0 6px;
+}
+
+/* Punktestand und Timer */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Weiße Spielfläche */
+.play-area {
+  background: white;
+  border-radius: 22px;
+  padding: 18px 20px;
+  min-height: 250px;
+}
+
+/* Frage über der Verpackung */
+.play-area h2 {
+  font-size: 26px;
+  margin: 0 0 8px;
+}
+
+/* Verpackungsbild */
+.waste-item {
+  width: 190px;
+  margin: 10px auto;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  position: relative;
+  z-index: 20;
+}
+
+.waste-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Verpackungsname */
+#item-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+/* Feedback und Recyclinginformation */
+#feedback {
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 10px auto 0;
+  min-height: 28px;
+  max-width: 860px;
+}
+
+/* Mülltonnen */
+.bins {
+  gap: 80px;
+  margin-top: 22px;
+}
+
+.bin {
+  padding: 20px 10px;
+  font-size: 21px;
+}
+
+.bin-symbol {
+  font-size: 52px;
+  margin-bottom: 8px;
+}
+
+/* Start-Button */
+button {
+  margin-top: 20px;
+  padding: 12px 32px;
+  font-size: 18px;
+}
+
+/* Anpassung für kleinere Bildschirme */
+@media (max-width: 600px) {
+  .game {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .waste-item {
+    width: 160px;
+  }
+
+  .waste-item img {
+    height: 140px;
+  }
+
+  .bin {
+    padding: 15px 5px;
+    font-size: 12px;
+  }
+
+  .bin-symbol {
+    font-size: 34px;
+  }
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.waste-item.dragging {
+  z-index: 9999;
+}

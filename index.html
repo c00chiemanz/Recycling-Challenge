@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycling Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game">
+
+    <header>
+      <h1>RECYCLING CHALLENGE</h1>
+      <p>Sortiere den Müll richtig!</p>
+    </header>
+
+    <section class="scoreboard">
+      <div>Punkte: <span id="score">0</span></div>
+    </section>
+
+    <section class="play-area">
+      <h2>Wohin gehört diese Verpackung?</h2>
+
+      
+<div id="waste-item" class="waste-item">
+  <img id="item-image" src="assets/glasmitmetall.png"
+       alt="Lebensmittelglas mit Metalldeckel" draggable="false">
+</div>
+
+
+      <p id="item-name">Lebensmittelglas mit Metalldeckel</p>
+      <p id="feedback" aria-live="polite"></p>
+    </section>
+
+  <section class="bins">
+
+  <div class="bin paper" data-type="paper">
+    <div class="bin-lid"></div>
+    <div class="bin-handle"></div>
+    <div class="bin-body">
+      <div class="bin-symbol">📄</div>
+      <div class="bin-label">PAPIER TONNE</div>
+    </div>
+  </div>
+
+  <div class="bin plastic" data-type="plastic">
+    <div class="bin-lid"></div>
+    <div class="bin-handle"></div>
+    <div class="bin-body">
+      <div class="bin-symbol">♻️</div>
+      <div class="bin-label">GELBE TONNE</div>
+    </div>
+  </div>
+
+  <div class="bin glass" data-type="glass">
+    <div class="bin-lid"></div>
+    <div class="bin-handle"></div>
+    <div class="bin-body">
+      <div class="bin-symbol">🍾</div>
+      <div class="bin-label">GLAS TONNE</div>
+    </div>
+  </div>
+
+</section>
+
+    <button id="start-btn">Spiel starten</button>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
